@@ -87,8 +87,6 @@ public class ChromosomeGenerator {
 
     result.add(new Neuron(NeuronCounter.getNext(), 0, 0, new SigmoidActivationFunction()));
 
-    result.add(new Neuron(NeuronCounter.getNext(), 0, 0, new SigmoidActivationFunction()));
-
     return result;
   }
 }

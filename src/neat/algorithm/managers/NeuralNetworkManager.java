@@ -1,4 +1,4 @@
-package neat.algorithm.tickmanagers;
+package neat.algorithm.managers;
 
 import neat.algorithm.model.Chromosome;
 import neat.algorithm.model.Neuron;
@@ -70,19 +70,19 @@ public class NeuralNetworkManager {
 
   private static Map<Integer, Double> getInputLayerOutput(
       Chromosome chromosome, List<Double> inputs) {
+    if (inputs.size() != chromosome.getInputNeurons().size())
+      throw new IllegalArgumentException("Wrong Input Shape!");
+
     Map<Integer, Double> neuronIDToInputMap = new HashMap<>();
-
-    double inputSum = 0;
-
-    for (Double input : inputs) {
-      inputSum += input;
-    }
 
     var neuronConnections = chromosome.getNeuronConnections();
 
     var neurons = chromosome.getInputNeurons();
 
-    for (Neuron neuron : neurons) {
+    for (int i = 0; i < inputs.size(); i++) {
+
+      Neuron neuron = neurons.get(i);
+      double inputSum = inputs.get(i);
 
       var output = neuron.activateNeuron(inputSum);
 

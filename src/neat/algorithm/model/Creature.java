@@ -22,7 +22,7 @@ public class Creature {
 
   public void tick(CreatureAction action) {
 
-    if (energy > 0) {
+    if (energy > 0 && action.getMovingDirection() != null) {
       switch (action.getMovingDirection()) {
         case NORTH:
           this.setPosition(
@@ -75,5 +75,9 @@ public class Creature {
 
   public void setEnergy(double energy) {
     this.energy = energy;
+  }
+
+  public void reward() {
+    this.energy += AlgorithmConstants.CREATURE_FOOD_REWARD;
   }
 }

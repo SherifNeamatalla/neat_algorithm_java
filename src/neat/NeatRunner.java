@@ -10,7 +10,7 @@ public class NeatRunner {
 
   public void run(List<Creature> creatures, List<Food> foods) {
 
-    NeuralNetworkRunner.runGenerationSimulation(creatures);
+    NeuralNetworkRunner.runGenerationSimulation(creatures,foods);
   }
 
   public void nextGeneration() {}
