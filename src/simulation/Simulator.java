@@ -28,22 +28,23 @@ public class Simulator {
 
   private GenerationMetaInformation lastGenerationMetaInformation;
 
-  public Simulator(MainView mainView) {
+  public Simulator(MainView mainView, SimulationConfiguration simulationConfiguration) {
 
     this.mainView = mainView;
 
+    this.simulationConfiguration = simulationConfiguration;
+
     this.neatRunner = new NeatRunner();
 
-    this.simulation = new Simulation();
+    this.simulation = new Simulation(simulationConfiguration.getCreatureCount(),simulationConfiguration.getFoodCount());
 
     KeyFrame keyFrame =
         new KeyFrame(
             Duration.millis(MS_PER_TICK * 1000),
             actionEvent -> {
-              neatRunner.run(simulation.getCreatures(),simulation.getFoods());
+              neatRunner.run(simulation.getCreatures(), simulation.getFoods());
               neatRunner.nextGeneration();
               this.mainView.draw(simulation);
-
             });
 
     this.mainView.connect(this);

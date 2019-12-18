@@ -4,14 +4,15 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import simulation.Simulator;
+import simulation.model.SimulationConfiguration;
 import view.MainView;
 
 public class Main extends Application {
 
   @Override
-  public void start(Stage primaryStage) throws Exception {
+  public void start(Stage primaryStage) {
     MainView mainView = new MainView();
-    new Simulator(mainView);
+    new Simulator(mainView, new SimulationConfiguration(50, 25));
 
     Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 

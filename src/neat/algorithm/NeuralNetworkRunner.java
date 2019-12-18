@@ -18,9 +18,13 @@ public class NeuralNetworkRunner {
     for (Creature creature : creatures) {
 
       Chromosome chromosome = creature.getChromosome();
+
       List<Double> chromosomeInput = environmentRunner.getChromosomeInput(creature);
+
       List<Double> outputs = NeuralNetworkManager.runNetwork(chromosome, chromosomeInput);
+
       CreatureAction creatureAction = CreatureActionTranslator.translateAction(outputs);
+
       environmentRunner.creatureTick(creature, creatureAction);
     }
   }

@@ -12,9 +12,16 @@ public class Simulation {
 
   private List<Food> foods;
 
-  public Simulation() {
+  public Simulation(int creatureCount, int foodCount) {
     creatures = new ArrayList<>();
-    creatures.add(new Creature());
+    foods = new ArrayList<>();
+
+    for (int i = 0; i < creatureCount; i++) {
+      creatures.add(new Creature());
+    }
+    for (int i = 0; i < foodCount; i++) {
+      foods.add(new Food());
+    }
   }
 
   public List<Creature> getCreatures() {

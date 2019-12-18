@@ -1,13 +1,14 @@
 package neat.environment.model;
 
 import neat.algorithm.model.Position;
+import neat.algorithm.util.PositionUtilHelper;
 
 public class Food {
 
   private Position position;
 
-  public Food(Position position) {
-    this.position = position;
+  public Food() {
+    this.position = PositionUtilHelper.buildRandomPosition();
   }
 
   public Position getPosition() {
